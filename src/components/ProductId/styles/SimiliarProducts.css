@@ -1,0 +1,11 @@
+.similiar__products{
+    margin-bottom: 2em;
+}
+
+.similiar__products-products{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+    padding: 2rem;
+}

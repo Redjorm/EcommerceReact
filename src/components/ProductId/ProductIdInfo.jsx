@@ -1,47 +1,48 @@
-import React, { useState } from 'react'
-import "./styles/ProductIdInfo.css"
-const ProductIdInfo = ({product}) => {
+import React, { useState } from "react";
+import "./styles/ProductIdInfo.css";
+const ProductIdInfo = ({ product }) => {
+  //console.log(product);
 
-    //console.log(product);
+  const [quantity, setQuantity] = useState(1);
 
-    const [quantity, setQuantity] = useState(1)
+  const handlePlus = () => {
+    setQuantity(quantity + 1);
+  };
 
-    const handlePlus = () => {
-        setQuantity(quantity + 1)
+  const handleMinus = () => {
+    if (quantity <= 0) {
+      setQuantity(0);
+    } else {
+      setQuantity(quantity - 1);
     }
-
-    const handleMinus = () => {
-
-        if(quantity <= 0){
-            setQuantity(0)
-        }else{
-            setQuantity(quantity - 1)
-        }
-    }
+  };
 
   return (
-    <section className='productidinfo__card'>
-        <h3>{product?.brand}</h3>
-        <h2>{product?.title}</h2>
-        <p>{product?.description}</p>
-        <footer>
-            <div>
-                <span>Price</span>
-                <span>{product?.price}</span>
+    <section className="productidinfo__card">
+      <h3>{product?.brand}</h3>
+      <h2>{product?.title}</h2>
+      <p>{product?.description}</p>
+      <footer className="productidinfo__footer">
+        <div className="productidinfo__footer-options">
+          <div className="productidinfo__footer-price">
+            <span>Price</span>
+            <span>{product?.price}</span>
+          </div>
+          <div>
+            <span>Quantity</span>
+            <div className="productinfo__buttons">
+              <button onClick={handleMinus}>-</button>
+              <div>{quantity}</div>
+              <button onClick={handlePlus}>+</button>
             </div>
-            <div>
-                <span>Quantity</span>
-                <div>
-                    <button onClick={handleMinus}>-</button>
-                    <div>{quantity}</div>
-                    <button onClick={handlePlus}>+</button>
-                </div>
-                
-            </div>
-            <button>Add to Cart<i className='bx bx-cart'></i> </button>
-        </footer>
+          </div>
+        </div>
+        <button className="productidinfo__btn-cart">
+          Add to Cart <i className="bx bx-cart"></i>{" "}
+        </button>
+      </footer>
     </section>
-  )
-}
+  );
+};
 
-export default ProductIdInfo
+export default ProductIdInfo;

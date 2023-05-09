@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "./styles/CardProduct.css";
+import useCrudCart from "../../hooks/useCrudCart";
 const CardProduct = ({ product }) => {
   const navigate = useNavigate();
+  const { addProductToCard } = useCrudCart()
 
   const handleSelectProductId = () => {
     navigate(`/product/${product.id}`);
@@ -9,6 +11,11 @@ const CardProduct = ({ product }) => {
 
   const handleBtnClick = (e) => {
     e.stopPropagation();
+    const data = {
+      quantity: 1,
+      productId: product.id
+    }
+    addProductToCard(data)
   };
 
   // console.log(product)

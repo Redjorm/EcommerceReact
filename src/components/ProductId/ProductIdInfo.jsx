@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./styles/ProductIdInfo.css";
+import useCrudCart from "../../hooks/useCrudCart";
 const ProductIdInfo = ({ product }) => {
   //console.log(product);
+
+  const { addProductToCard } = useCrudCart()
 
   const [quantity, setQuantity] = useState(1);
 
@@ -16,6 +19,14 @@ const ProductIdInfo = ({ product }) => {
       setQuantity(quantity - 1);
     }
   };
+
+  const handleAddToCart = () => {
+    const data = {
+      quantity,
+      productId: product.id
+    }
+    addProductToCard(data)
+  }
 
   return (
     <section className="productidinfo__card">
@@ -37,7 +48,7 @@ const ProductIdInfo = ({ product }) => {
             </div>
           </div>
         </div>
-        <button className="productidinfo__btn-cart">
+        <button onClick={handleAddToCart} className="productidinfo__btn-cart">
           Add to Cart <i className="bx bx-cart"></i>{" "}
         </button>
       </footer>

@@ -8,6 +8,7 @@ import ProductId from './pages/ProductId'
 import Header from './components/shared/Header'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Cart from './pages/Cart'
 
 
 
@@ -39,6 +40,7 @@ useEffect(() => {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/product/:id' element={<ProductId />} />
+          <Route path='/cart' element={<Cart/>} />
         </Routes>
       </div>
 

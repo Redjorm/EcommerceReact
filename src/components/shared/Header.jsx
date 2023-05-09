@@ -19,7 +19,7 @@ const Header = () => {
       <Link to="/login">Login</Link>
       <Link to="/register">register</Link>
       <Link to="/">Purchases</Link>
-      <Link to="/">Cart</Link>
+      <Link to="/Cart">Cart</Link>
       <a  className="icon" onClick={myFunction}>
         <i className="bx bx-menu"></i>
       </a>

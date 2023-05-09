@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllProductsThunk } from '../store/slices/products.slice'
+import { getAllProductsCartThunk } from '../store/slices/cart.slices'
 import ProductInCart from '../components/Cart/ProductInCart'
 
 const Cart = () => {
@@ -8,7 +8,7 @@ const Cart = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getAllProductsThunk())
+        dispatch(getAllProductsCartThunk())
     }, [])
 
 

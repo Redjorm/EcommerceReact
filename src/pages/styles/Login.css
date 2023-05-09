@@ -9,16 +9,15 @@
     background-color: #F7F7F7;
 }
 
-.form__user-container{
+.form__user-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: .7rem;
     background-color: #fff;
-    padding: 1.5rem;
-    /* height: 400px; */
-    width: 300px;
+    padding: 1rem;
+    width: 290px;
     border-radius: .5rem;
 }
 
@@ -35,12 +34,11 @@
     align-items: center;
     gap: .7rem;
     width: 300px;
-    border-radius: .5rem;
-    padding: 1rem;
+    border-radius: .5rem;  
 }
 
 .input__container{
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     gap: .5rem;
@@ -53,7 +51,7 @@
 .form__user button{
     background-color: #F85555 ;
     padding: .5rem;
-    width: 100%;
+    width: 90%;
     height: 35px;
     color: #fff;
 }

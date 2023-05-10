@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.css";
 
 const ProductInCart = ({ prodCart }) => {
-  console.log(prodCart);
+  /* console.log(prodCart); */
   const { deleteProductFromCart } = useCrudCart();
 
   const handleDeleteCart = () => {
@@ -18,7 +18,6 @@ const ProductInCart = ({ prodCart }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        /* Swal.fire("Deleted!", "Your file has been deleted.", "success"); */
         deleteProductFromCart(prodCart.id);
       }
     });
@@ -36,7 +35,7 @@ const ProductInCart = ({ prodCart }) => {
         <i className="bx bx-trash"></i>
       </button>
       <footer>
-        <span>{prodCart.quantity}</span>
+        <span>{prodCart.quantity} </span>
         <span>{prodCart.product.price}</span>
       </footer>
     </article>

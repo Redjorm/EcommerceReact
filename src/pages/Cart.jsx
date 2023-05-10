@@ -1,31 +1,42 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getAllProductsCartThunk } from '../store/slices/cart.slices'
-import ProductInCart from '../components/Cart/ProductInCart'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProductsCartThunk } from "../store/slices/cart.slices";
+import ProductInCart from "../components/Cart/ProductInCart";
+import usePurchases from "../hooks/usePurchases";
 
 const Cart = () => {
+  const dispatch = useDispatch();
+  const { buyThisCart } = usePurchases();
+  useEffect(() => {
+    dispatch(getAllProductsCartThunk());
+  }, []);
 
-    const dispatch = useDispatch()
+  const { cartGlobal } = useSelector((state) => state);
 
-    useEffect(() => {
-        dispatch(getAllProductsCartThunk())
-    }, [])
+  const totalPriceCart = cartGlobal?.reduce(
+    (acc, cv) => acc + cv.quantity * cv.product.price,
+    0
+  );
 
+  const handlePurchase = () => {
+    buyThisCart()
+  };
 
-    const { cartGlobal } = useSelector(state => state)
+  return (
+    <div>
+      <h2>Cart</h2>
+      <div>
+        {cartGlobal?.map((prodCart) => (
+          <ProductInCart key={prodCart.id} prodCart={prodCart} />
+        ))}
+      </div>
+      <footer>
+        <span>Total:</span>
+        <h3>{totalPriceCart}</h3>
+        <button onClick={handlePurchase}>Buy Now</button>
+      </footer>
+    </div>
+  );
+};
 
-    console.log(cartGlobal);
-
-    return (
-        <div>
-            <h2>Cart</h2>
-            {
-                cartGlobal?.map(prodCart => (
-                    <ProductInCart key={prodCart.id} prodCart={prodCart} />
-                ))
-            }
-        </div>
-    )
-}
-
-export default Cart
+export default Cart;

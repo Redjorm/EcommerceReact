@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <div className="topnav" id="myTopnav">
       <Link to="/">E-commerce</Link>
-      <Link to="/">Purchases</Link>
+      <Link to="/purchases">Purchases</Link>
       <Link to="/Cart"><i className='bx bxs-cart' ></i></Link>
       <Link to="/login"><i className='bx bxs-user-circle'></i></Link>
       <a  className="icon" onClick={myFunction}>

@@ -9,6 +9,7 @@ import Header from "./components/shared/Header";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
+import Purchases from "./pages/Purchases";
 
 
 //import { useDispatch, useSelector } from 'react-redux'
@@ -33,6 +34,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/product/:id" element={<ProductId />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/purchases" element={<Purchases />} />
         </Routes>
       </div>
     </>

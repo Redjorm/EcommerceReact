@@ -1,24 +1,32 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import CardProduct from '../components/Home/CardProduct'
-import "./styles/Products.css"
-
+import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import CardProduct from "../components/Home/CardProduct";
+import "./styles/Products.css";
+import FilterCategori from "../components/Home/FilterCategori";
 
 const Home = () => {
+  const [inputValue, setInputValue] = useState('');
 
-   const { productsGlobal } = useSelector(state => state)
+  const { productsGlobal } = useSelector((state) => state);
 
-    //console.log(productsGlobal);
+  const input = useRef();
 
+  const handleChangeInput = () => {
+    setInputValue(input.current.value.toLowerCase().trim());
+  };
+
+  
   return (
-    <div className='products'>
-        {
-            productsGlobal?.map(prod => (
-                <CardProduct key={prod.id} product={prod} />
-            ))
-        }
+    <div className="products">
+      <input ref={input} onChange={handleChangeInput} type="text" />
+      <FilterCategori />
+      <div className="products">
+        {productsGlobal?.filter((prod => prod.title.toLowerCase().includes(inputValue))).map((prod) => (
+          <CardProduct key={prod.id} product={prod} />
+        ))}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

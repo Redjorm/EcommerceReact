@@ -4,8 +4,10 @@ import { useForm } from 'react-hook-form'
 import useAuthentication from '../hooks/useAuthentication'
 import defaultRegisterValues from '../components/utils/defaultRegisterValues'
 import { Link } from 'react-router-dom'
+import CloseSesion from './CloseSesion'
 
 const Register = () => {
+    const token = localStorage.getItem("token");
 
     const { register, handleSubmit, reset, formState: { errors }, } = useForm()
 
@@ -17,8 +19,9 @@ const Register = () => {
 
     }
 
-    return (
-        <div className="form__user">
+    if (token == null) {
+        return (
+            <div className="form__user">
             <div className="form__user-container">
                 <form onSubmit={handleSubmit(sumit)}>
                     <h2>Create a new User</h2>
@@ -72,7 +75,10 @@ const Register = () => {
                 <p>Already have an account? <span><Link to="/login">Log in</Link></span></p>
             </div>
         </div>
-    )
+        );
+      } else {
+        return <CloseSesion />;
+      }
 }
 
 export default Register

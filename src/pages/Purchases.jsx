@@ -10,13 +10,13 @@ const Purchases = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Puchases</h2>
-      <div>
+    <div className='cart'>
+      <h2 className='cart__title'>Purchases</h2>
+      <div className='cart__container'>
         {
           purchases?.map((purchase) => (
             <ProductPurchase 
-            key={purchases.id}
+            key={purchase.id}
             prodPurchase={purchase}/>
           ))
         }
@@ -26,4 +26,3 @@ const Purchases = () => {
 };
 
 export default Purchases;
-

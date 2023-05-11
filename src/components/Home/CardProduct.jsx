@@ -1,9 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import "./styles/CardProduct.css";
 import useCrudCart from "../../hooks/useCrudCart";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.css";
+
 const CardProduct = ({ product }) => {
+  const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
-  const { addProductToCard } = useCrudCart()
+
+  const { addProductToCard } = useCrudCart();
 
   const handleSelectProductId = () => {
     navigate(`/product/${product.id}`);
@@ -11,14 +17,22 @@ const CardProduct = ({ product }) => {
 
   const handleBtnClick = (e) => {
     e.stopPropagation();
-    const data = {
-      quantity: 1,
-      productId: product.id
-    }
-    addProductToCard(data)
-  };
+    if (token == null) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You must login to add to cart",
+      });
 
-  // console.log(product)
+      navigate('/login')
+    } else {
+      const data = {
+        quantity: 1,
+        productId: product.id,
+      };
+      addProductToCard(data);
+    }
+  };
 
   return (
     <article className="product" onClick={handleSelectProductId}>
@@ -41,7 +55,7 @@ const CardProduct = ({ product }) => {
       </section>
       <div className="product__price">
         <span className="product__label">price</span>
-        <span className="product__price-value">{product.price}</span>
+        <span className="product__price-value">${product.price}</span>
       </div>
       <button onClick={handleBtnClick} className="product__btn">
         <i className="bx bx-cart-alt"></i>

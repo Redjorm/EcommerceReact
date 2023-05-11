@@ -23,7 +23,7 @@ console.log(filterProducts);
 
   return (
     <section className='similiar__products'> 
-        <h2>Discover Similar products</h2>
+        <h2 className='similiar__products-h2'>Discover Similar products</h2>
         <div className='similiar__products-products'>
             {
                 filterProducts?.filter(prod => prod.id !== product.id ).map(prod => {

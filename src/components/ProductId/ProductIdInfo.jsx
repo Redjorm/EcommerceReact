@@ -1,12 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./styles/ProductIdInfo.css";
 import useCrudCart from "../../hooks/useCrudCart";
-const ProductIdInfo = ({ product }) => {
-  //console.log(product);
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.css";
+import { useNavigate } from "react-router-dom";
 
-  const { addProductToCard } = useCrudCart()
+const ProductIdInfo = ({ product }) => {
+  const token = localStorage.getItem("token");
+
+  const { addProductToCard } = useCrudCart();
 
   const [quantity, setQuantity] = useState(1);
+
+  const navigate = useNavigate();
 
   const handlePlus = () => {
     setQuantity(quantity + 1);
@@ -21,15 +27,22 @@ const ProductIdInfo = ({ product }) => {
   };
 
   const handleAddToCart = () => {
-    const data = {
-      quantity,
-      productId: product.id
+    if (token == null) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You must login to add to cart",
+      });
+
+      navigate("/login");
+    } else {
+      const data = {
+        quantity,
+        productId: product.id,
+      };
+      addProductToCard(data);
     }
-    addProductToCard(data)
-  }
-
-
- 
+  };
 
   return (
     <section className="productidinfo__card">

@@ -12,8 +12,8 @@ const CloseSesion = () => {
 
   return (
     <div className="close__sesion">
-      <h2>Close Sesion</h2>
-      <button onClick={handleCloseSesion}>
+      <h2 className="close__sesion-h2">Close Sesion</h2>
+      <button className="close__sesion-btn" onClick={handleCloseSesion}>
         <i className="bx bx-x-circle"></i>
       </button>
     </div>

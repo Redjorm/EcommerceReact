@@ -29,15 +29,16 @@ const ProductInCart = ({ prodCart }) => {
       <header className="prodcart__header">
         <img className="prodcart__img" src={prodCart.product.images[0].url} alt="" />
       </header>
-      <section>
-        <h3 className="prodcart__title">{prodCart.product.title}</h3>
-      </section>
-      <button className="Prodcart__delete" onClick={handleDeleteCart}>
-        <i className="Prodcart__delete-icon bx bx-trash"></i>
+      <h3 className="prodcart__title">{prodCart.product.title}</h3>
+      <button className="prodcart__delete" onClick={handleDeleteCart}>
+        <i className="prodcart__delete-icon bx bx-trash"></i>
       </button>
       <footer className="prodcart__footer">
-        <span className="prodcart__subtotal-label">{prodCart.quantity} </span>
-        <span className="prodcart__subtotal-input">{prodCart.product.price}</span>
+        <span className="prodcart__quantity" >{prodCart.quantity}</span>
+        <div className="prodcart__subtotal">
+          <span className="prodcart__subtotal-label">Subtotal:</span>
+          <span className="prodcart__subtotal-input">${prodCart.product.price * prodCart.quantity}</span>
+        </div>
       </footer>
     </article>
   );

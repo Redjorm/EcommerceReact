@@ -1,10 +1,18 @@
 .prodcart {
-    display: flex;
+    display: grid;
     grid-template-columns: 6em 1fr 2em;
     gap: 1em;
     align-items: center;
     width: 100%;
     max-width: 25em;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.prodcart__img {
+    width: 100%;
+    max-width: 6em;
 }
 
 .prodcart__title {
@@ -55,6 +63,15 @@
     font-weight: 700;
 }
 
-.prodcart__subtotal-value::before {
-    
+
+
+@media (min-width: 600px) {
+    .prodcart {
+        display: grid;
+        grid-template-columns: 6em 1fr 2em;
+        gap: 1em;
+        align-items: center;
+        width: 100%;
+        max-width: 50em;
+    }
 }

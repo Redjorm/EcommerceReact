@@ -2,6 +2,7 @@ import React from "react";
 import useCrudCart from "../../hooks/useCrudCart";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.css";
+import "./style/productInCart.css"
 
 const ProductInCart = ({ prodCart }) => {
   /* console.log(prodCart); */
@@ -24,19 +25,19 @@ const ProductInCart = ({ prodCart }) => {
   };
 
   return (
-    <article>
-      <header>
-        <img src={prodCart.product.images[0].url} alt="" />
+    <article className="prodcart">
+      <header className="prodcart__header">
+        <img className="prodcart__img" src={prodCart.product.images[0].url} alt="" />
       </header>
       <section>
-        <h3>{prodCart.product.title}</h3>
+        <h3 className="prodcart__title">{prodCart.product.title}</h3>
       </section>
-      <button onClick={handleDeleteCart}>
-        <i className="bx bx-trash"></i>
+      <button className="Prodcart__delete" onClick={handleDeleteCart}>
+        <i className="Prodcart__delete-icon bx bx-trash"></i>
       </button>
-      <footer>
-        <span>{prodCart.quantity} </span>
-        <span>{prodCart.product.price}</span>
+      <footer className="prodcart__footer">
+        <span className="prodcart__subtotal-label">{prodCart.quantity} </span>
+        <span className="prodcart__subtotal-input">{prodCart.product.price}</span>
       </footer>
     </article>
   );

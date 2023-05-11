@@ -28,9 +28,9 @@ const Cart = () => {
   }
 
   return (
-    <div>
-      <h2>Cart</h2>
-      <div>
+    <div className='cart'>
+      <h2 className='cart__title'>Cart</h2>
+      <div className='cart__container'>
         {
           cartGlobal?.map(prodCart => (
             <ProductInCart
@@ -39,9 +39,9 @@ const Cart = () => {
           ))
         }
       </div>
-      <footer>
-        <span>Total:</span>
-        <h3>{totalPriceCart}</h3>
+      <footer className='cart__footer'>
+        <span className='cart__total-label'>Total:</span>
+        <h3 className='cart__total-value'>{totalPriceCart}</h3>
         <button onClick={handlePurchase} className='cart__btn'>Buy now</button>
       </footer>
     </div>

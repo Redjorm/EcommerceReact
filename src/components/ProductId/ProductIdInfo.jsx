@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./styles/ProductIdInfo.css";
 import useCrudCart from "../../hooks/useCrudCart";
 const ProductIdInfo = ({ product }) => {
@@ -27,6 +27,9 @@ const ProductIdInfo = ({ product }) => {
     }
     addProductToCard(data)
   }
+
+
+ 
 
   return (
     <section className="productidinfo__card">

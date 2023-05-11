@@ -14,7 +14,7 @@ const ProductId = () => {
 
   useEffect(() => {
     getProductById(id);
-  }, []);
+  }, [id]);
 
   //console.log(product);
   return (

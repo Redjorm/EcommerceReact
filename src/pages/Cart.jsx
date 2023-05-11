@@ -4,6 +4,7 @@ import { getAllProductsCartThunk } from "../store/slices/cart.slices";
 import ProductInCart from "../components/Cart/ProductInCart";
 import "./styles/cart.css";
 import usePurchases from "../hooks/usePurchases";
+import Swal from "sweetalert2";
 
 const Cart = () => {
   const token = localStorage.getItem("token");
@@ -27,7 +28,24 @@ const Cart = () => {
   );
 
   const handlePurchase = () => {
-    buyThisCart();
+
+    if (cartGlobal.length === 0) {
+      Swal.fire('there is nothing in the cart')
+    } else {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "This action will buy everything that is in the cart!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, buy it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          buyThisCart();
+        }
+      })
+    }
   };
 
   if (token == null) {

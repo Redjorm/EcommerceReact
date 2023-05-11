@@ -3,6 +3,7 @@ import getConfigToken from "../components/utils/getConfigToken"
 import { getAllProductsCartThunk } from "../store/slices/cart.slices"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
+import Swal from "sweetalert2"
 
 
 const url = `https://e-commerce-api-v2.academlo.tech/api/v1/purchases`
@@ -16,7 +17,13 @@ const usePurchases = () => {
 
         axios.post(url, {}, getConfigToken())
             .then(res => {
-                console.log(res.data)
+                Swal.fire({
+                    position: 'bottom-end',
+                    icon: 'success',
+                    title: 'successful purchase',
+                    showConfirmButton: false,
+                    timer: 1200
+                })
                 dispatch(getAllProductsCartThunk())
             })
             .catch(err => console.log(err))

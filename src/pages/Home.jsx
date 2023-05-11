@@ -52,7 +52,7 @@ const Home = () => {
           type="text"
         />
         <span className="home__filter-icon">
-          <i class="bx bx-search-alt-2"></i>
+          <i className="bx bx-search-alt-2"></i>
         </span>
       </div>
 

@@ -5,7 +5,7 @@ import "sweetalert2/dist/sweetalert2.css";
 import "./style/productInCart.css"
 
 const ProductInCart = ({ prodCart }) => {
-  /* console.log(prodCart); */
+  
   const { deleteProductFromCart } = useCrudCart();
 
   const handleDeleteCart = () => {
